@@ -18,3 +18,6 @@ struct memPicture *canvas  = &pictures[1];
         canvas->size   = 1080 * 1920 * 4; // Total size for 1080p RGBA_8888
         alloc_ION_mem(canvas);
     }
+I wyczysci ct canvas
+memcpy(mem_info->mem_buf, data, mem_info->size);
+memset? 0
