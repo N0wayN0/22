@@ -5,3 +5,5 @@ echo on > /sys/power/state
 ui element on_click has to accept argument same as timeout style. Add .data
 field to ui_element in layout.h to be passed as arg
 
+dodac. do overlay.c funkcje
+prepare_ui_canvas()
