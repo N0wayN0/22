@@ -6,4 +6,15 @@ ui element on_click has to accept argument same as timeout style. Add .data
 field to ui_element in layout.h to be passed as arg
 
 dodac. do overlay.c funkcje
-prepare_ui_canvas()
+prepare_ui_canvas() {
+
+struct memPicture *canvas  = &pictures[1]; 
+    
+    // Initialize the Canvas once if it hasn't been done yet
+    if (canvas->mem_fd == 0) {
+        snprintf(canvas->name, sizeof(canvas->name), "ui_canvas");
+        canvas->width  = 1080;
+        canvas->height = 1920;
+        canvas->size   = 1080 * 1920 * 4; // Total size for 1080p RGBA_8888
+        alloc_ION_mem(canvas);
+    }
