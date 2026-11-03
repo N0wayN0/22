@@ -25,6 +25,8 @@ extern int fbfd;
 #define MAX_PICTURES 8
 static struct memPicture pictures[MAX_PICTURES] = {0};
 static struct mdp_overlay overlays[MAX_OVERLAYS] = {0};
+//pictures[0]  for ui_atlas.png
+//pictures[1]  for ui_canvas
 
 static struct lista blit_list = {0};
 int MAX_BLITS = 6;  // tyle samo co w lista w overlay.h
