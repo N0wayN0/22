@@ -742,7 +742,8 @@ void prepare_canvas() {
 
 
 int display_canvas() {
-if (ov_slot >= 0) {
+    int ov_slot = prepare_overlay2("ui_canvas");
+    if (ov_slot >= 0) {
         //paste_overlay2(0, 0, 1080, 1920); // Scale presentation structure to screen edges
         display_overlay2(ov_slot, 1);     // Push the finished canvas slot live!
     }
