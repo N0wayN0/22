@@ -107,6 +107,7 @@ void create_layout(const struct layout *layout) {
     }  // for 
 //    printf("(%s) ----- BLIT -----\n", __func__);
 //    blit_now();
+      display_canvas();
 }
 
 void execute(int id) {
