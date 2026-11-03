@@ -42,10 +42,10 @@ static void create_button(const struct element *e)
 
     //printf("(%s) ----- element pointer for blit --> %p \n",__func__, (void*)e);
     //add_to_blit_list("button", e);
-    draw_interface_frame();
+    //draw_interface_frame();
 
-    //software_blit(100, 100, 300, 80, 400, 200 + (i * 120));
-    sleep(3);
+    software_blit(e);
+    //sleep(3);
     // 3. add Touch area
     //printf("(%s) clickable: %d \n", __func__, e->clickable);
     if (e->clickable == 1) {
