@@ -725,6 +725,21 @@ void draw_interface_frame() {
         display_overlay2(ov_slot, 1);     // Push the finished canvas slot live!
     }
 }
+void prepare_canvas() {
+    // Slot 1: This is your full-screen main rendering canvas
+    struct memPicture *canvas  = &pictures[1]; 
+    
+    // Initialize the Canvas once if it hasn't been done yet
+    if (canvas->mem_fd == 0) {
+        snprintf(canvas->name, sizeof(canvas->name), "ui_canvas");
+        canvas->width  = 1080;
+        canvas->height = 1920;
+        canvas->size   = 1080 * 1920 * 4; // Total size for 1080p RGBA_8888
+        alloc_ION_mem(canvas);
+    }
+    memset(canvas->mem_buf, 0, canvas->size);
+}
+
 
 int display_canvas() {
 if (ov_slot >= 0) {
