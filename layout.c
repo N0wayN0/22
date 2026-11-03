@@ -81,6 +81,7 @@ void refresh_layout() {
 void create_layout(const struct layout *layout) {
 //    printf("(%s) ----- pointer --> %p \n",__func__, (void*)layout);
     touch_clear_areas();
+    prepare_ui_canvas();
     int len = layout->count;
 //    printf("(%s) Layout name: %s \n", __func__, layout->name);
 //    printf("(%s) Elements No: %d \n", __func__, layout->count);
