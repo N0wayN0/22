@@ -678,18 +678,18 @@ exit(0);
 
 }
 
-void software_blit(struct memPicture *dst_pic, 
-                              int src_x, int src_y, int src_w, int src_h,
+void software_blit(int src_x, int src_y, int src_w, int src_h,
                               int dst_x, int dst_y) 
 {
     struct memPicture *ui_atlas = &pictures[0]; 
+    struct memPicture *canvas &pictures[1];
     uint32_t *src_pixels = (uint32_t *)ui_atlas->mem_buf;
-    uint32_t *dst_pixels = (uint32_t *)dst_pic->mem_buf;
+    uint32_t *dst_pixels = (uint32_t *)canvas->mem_buf;
 
     for (int y = 0; y < src_h; y++) {
         // Calculate raw memory line strides for RGBA_8888 
         int src_row_idx = ((src_y + y) * ui_atlas->width) + src_x;
-        int dst_row_idx = ((dst_y + y) * dst_pic->width) + dst_x;
+        int dst_row_idx = ((dst_y + y) * canvas->width) + dst_x;
 
         // Blit an entire row of pixels directly through memory pointers
         memcpy(&dst_pixels[dst_row_idx], &src_pixels[src_row_idx], src_w * sizeof(uint32_t));
