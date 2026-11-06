@@ -726,7 +726,16 @@ void draw_interface_frame() {
         display_overlay2(ov_slot, 1);     // Push the finished canvas slot live!
     }
 }
+1 init 2 canvases and clear them
+  name them canvasA and CanvasB
+2 set 0 as active
+  int active_canvas = 0
+3  blit. to inactive !active_canvas
+4 display !active_canvas
+    change active_canvas = !active_canvas 
+
 void prepare_canvas() {
+    
     // Slot 1: This is your full-screen main rendering canvas
 for (int i = 0; i <= 1; i++)  
     struct memPicture *canvas  = &ion_canvas[i]; 
