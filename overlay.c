@@ -27,6 +27,7 @@ static struct memPicture pictures[MAX_PICTURES] = {0};
 static struct mdp_overlay overlays[MAX_OVERLAYS] = {0};
 //pictures[0]  for ui_atlas.png
 //pictures[1]  for ui_canvas
+static struct memPicture ion_canvas[2];
 
 static struct lista blit_list = {0};
 int MAX_BLITS = 6;  // tyle samo co w lista w overlay.h
@@ -727,11 +728,12 @@ void draw_interface_frame() {
 }
 void prepare_canvas() {
     // Slot 1: This is your full-screen main rendering canvas
-    struct memPicture *canvas  = &pictures[1]; 
+for (int i = 0; i <= 1; i++)  
+    struct memPicture *canvas  = &ion_canvas[i]; 
     
     // Initialize the Canvas once if it hasn't been done yet
     if (canvas->mem_fd == 0) {
-        snprintf(canvas->name, sizeof(canvas->name), "ui_canvas");
+        //snprintf(canvas->name, sizeof(canvas->name), "ui_canvas");
         canvas->width  = 1080;
         canvas->height = 1920;
         canvas->size   = 1080 * 1920 * 4; // Total size for 1080p RGBA_8888
@@ -748,3 +750,9 @@ int display_canvas() {
         display_overlay2(ov_slot, 1);     // Push the finished canvas slot live!
     }
 }
+
+int current_canvas =0;
+swap_ion_canvas() {
+current_canvas = !current_canvas;
+ion_canvas[0] must be same as overlay[0]
+ion_canvas[1] must be same as overlay[1]
